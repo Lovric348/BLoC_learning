@@ -30,11 +30,22 @@ class FunPage extends StatelessWidget {
                 ),),
             ),
             body: Container(
+
               height: screenHeight*1,
               width: screenWidth*1,
               child: Stack(
                 children: [
                   
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      'How many news would \nyou like to read?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 27,
+                        fontWeight: FontWeight.bold,
+                        color: state.colorTitle,
+                      ),)),
                   Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -72,8 +83,32 @@ class FunPage extends StatelessWidget {
                             splashColor: Colors.black87,
                             elevation: 5,
                             backgroundColor: Colors.grey,
-                            onPressed: (){}
+                            onPressed: (){
+                              context.read<ColorsBloc>().add(ResetEvent());
+                              }
                             ),
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: SizedBox(
+                            
+                            width: screenWidth*0.4,
+                            height: screenHeight*0.4,
+                            child: FloatingActionButton(
+                              child: Text(
+                                '-1',
+                                style: TextStyle(
+                                  fontSize: 29,
+                                  fontWeight: FontWeight.bold,
+                                ),),
+                              splashColor: Color.fromARGB(221, 9, 101, 29),
+                              elevation: 5,
+                              backgroundColor: Color.fromARGB(255, 140, 239, 104),
+                              onPressed: (){
+                                context.read<ColorsBloc>().add(DecreaseEvent());
+                                }
+                              ),
+                          ),
                         ),
                           ],
                       ),
