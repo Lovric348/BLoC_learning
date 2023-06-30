@@ -9,6 +9,8 @@ class FunPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => ColorsBloc(),
       child: MaterialApp(
@@ -16,6 +18,7 @@ class FunPage extends StatelessWidget {
         home: BlocBuilder<ColorsBloc, ColorsState>(
          builder: (BuildContext context, state) {
           return Scaffold(
+            backgroundColor: state.color,
             appBar: AppBar(
               backgroundColor: state.color,
               centerTitle: true,
@@ -25,6 +28,59 @@ class FunPage extends StatelessWidget {
                   color: state.colorTitle,
                   fontSize: 29,
                 ),),
+            ),
+            body: Container(
+              height: screenHeight*1,
+              width: screenWidth*1,
+              child: Stack(
+                children: [
+                  
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: screenWidth*0.8,
+                      height: screenHeight*0.6,
+                      child: Stack(
+                        children: [
+                        SizedBox(
+                          width: screenWidth*1,
+                          height: screenHeight*1,
+                          child: FloatingActionButton(
+                            child: Text(
+                              "${state.number}",
+                              style: TextStyle(
+                                fontSize: 29,
+                                fontWeight: FontWeight.bold,
+                              ) ,),
+                            onPressed: (){
+                              context.read<ColorsBloc>().add(ColorChangeEvent());
+                            },
+                            splashColor: Color.fromARGB(255, 6, 84, 147),
+                            ),
+                        ),
+                        SizedBox(
+                          
+                          width: screenWidth*0.3,
+                          height: screenHeight*0.3,
+                          child: FloatingActionButton(
+                            child: Text(
+                              '0',
+                              style: TextStyle(
+                                fontSize: 29,
+                                fontWeight: FontWeight.bold,
+                              ),),
+                            splashColor: Colors.black87,
+                            elevation: 5,
+                            backgroundColor: Colors.grey,
+                            onPressed: (){}
+                            ),
+                        ),
+                          ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
 
