@@ -13,7 +13,7 @@ class ColorsState extends Equatable {
     
     );
 
-  factory ColorsState.initial() => ColorsState(
+  factory ColorsState.initial() => const ColorsState(
     number: 0,
     color: Colors.white,
     colorTitle: Colors.blue
