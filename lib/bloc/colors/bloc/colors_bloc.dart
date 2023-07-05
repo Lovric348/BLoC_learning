@@ -28,7 +28,7 @@ class ColorsBloc extends Bloc<ColorsEvent, ColorsState> {
       final currentTitleColor = state.colorTitle;
 
       Color nextColor;
-      int nextNumber;
+      int number;
       Color titleColor;
 
       do {
@@ -38,9 +38,9 @@ class ColorsBloc extends Bloc<ColorsEvent, ColorsState> {
         titleColor = availableTitleColors[random.nextInt(availableTitleColors.length)];
       } while (titleColor == currentTitleColor);
 
-      nextNumber = state.number + 1;
+      number = state.number + 1;
 
-      emit(ColorsState(color: nextColor, number: nextNumber, colorTitle: titleColor));
+      emit(ColorsState(color: nextColor, number: number, colorTitle: titleColor));
     });
     on<ResetEvent>((event, emit) {
       emit(ColorsState.initial());
@@ -63,7 +63,7 @@ class ColorsBloc extends Bloc<ColorsEvent, ColorsState> {
       final currentTitleColor2 = state.colorTitle;
 
       Color nextColor2;
-      int nextNumber2;
+      int number;
       Color titleColor2;
 
       do {
@@ -73,9 +73,13 @@ class ColorsBloc extends Bloc<ColorsEvent, ColorsState> {
         titleColor2 = availableTitleColors2[random2.nextInt(availableTitleColors2.length)];
       } while (titleColor2 == currentTitleColor2);
 
-      nextNumber2 = state.number - 1;
+      number = state.number - 1;
 
-      emit(ColorsState(color: nextColor2, number: nextNumber2, colorTitle: titleColor2));
+      emit(ColorsState(color: nextColor2, number: number, colorTitle: titleColor2));
     });
+    on<SeriousPageEvent>((event, emit) {
+      emit(ColorsState(color: state.color, number: state.number, colorTitle: state.colorTitle));
+    });
+    
   }
 }

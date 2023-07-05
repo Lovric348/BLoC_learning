@@ -11,3 +11,5 @@ abstract class ColorsEvent extends Equatable {
 class ColorChangeEvent extends ColorsEvent {}
 class ResetEvent extends ColorsEvent {}
 class DecreaseEvent extends ColorsEvent {}
+class NextPageEvent extends ColorsEvent {}
+class SeriousPageEvent extends ColorsEvent {}
