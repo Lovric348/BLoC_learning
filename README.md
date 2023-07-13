@@ -1,16 +1,10 @@
-# bloc_learning
+This Flutter app utilizes the BLoC state management pattern to bring you a simple yet interactive experience. It features a classic counter that dynamically changes color to lighter shades when incremented and darker shades when decremented. A reset button is also included for convenience.
 
-A new Flutter project.
+<img width="241" alt="fun1" src="https://github.com/Lovric348/BLoC_learning/assets/70754640/2b71e1d6-ff9c-47e0-89a8-5561b78a91a3">
+<img width="243" alt="fun2" src="https://github.com/Lovric348/BLoC_learning/assets/70754640/dcbb07f8-2742-489e-a8f2-c527526b5087">
+<img width="239" alt="fun3" src="https://github.com/Lovric348/BLoC_learning/assets/70754640/96a4f0da-0726-452d-95ff-9d7c195572e0">
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+In addition, the app incorporates an API request from a free API service on a dedicated page. The title is displayed with a larger font size and bold styling, while a descriptive text accompanies it.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="242" alt="serious1" src="https://github.com/Lovric348/BLoC_learning/assets/70754640/349574ec-7b1d-4517-97a1-b02a7f6e88bd">
