@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../../bloc/colors/bloc/colors_bloc.dart';
 
 
@@ -89,6 +90,11 @@ class _FunPageState extends State<FunPage> {
                           
                         
                       }),
+                      Container(
+                        height: screenHeight * 0.5,
+                        width: screenWidth * 0.5,
+                        child: Lottie.network('https://lottie.host/124f055b-597b-438b-ab5a-232e73c74a5e/lDBLCV2l10.json'),
+                      ),
                 ],
               ),
             ),

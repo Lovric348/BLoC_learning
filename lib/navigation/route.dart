@@ -27,6 +27,7 @@ class AppRouter {
         builder:(_) => BlocProvider.value(
         value: _colorsBloc,
         child: SeriousPage(),
+        
         ), );
 
       case '/detailspage': 

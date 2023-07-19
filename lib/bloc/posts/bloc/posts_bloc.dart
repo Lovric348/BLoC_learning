@@ -10,7 +10,7 @@ part 'posts_event.dart';
 part 'posts_state.dart';
 
 class PostsBloc extends Bloc<PostsEvent, PostsState> {
-  PostsBloc() : super(PostsInitial()) {
+  PostsBloc() : super(PostsInitial()) { 
     on<PostsInitialFetchEvent>(postsInitialFetchEvent);
     on<PostsNavigateToSeriousPageEvent>(postsNavigateToSeriousPageEvent);
     
