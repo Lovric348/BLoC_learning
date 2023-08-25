@@ -87,7 +87,7 @@ class _FunPageState extends State<FunPage> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/seriouspage');
+                        Navigator.of(context).pushNamed('/practice');
                         
                           
                         
