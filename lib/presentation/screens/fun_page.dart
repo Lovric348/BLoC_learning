@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../bloc/colors/bloc/colors_bloc.dart';
 
 
@@ -16,6 +17,7 @@ class _FunPageState extends State<FunPage> {
   @override
   Widget build(BuildContext context) {
     
+
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
