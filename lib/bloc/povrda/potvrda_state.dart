@@ -19,7 +19,5 @@ factory PotvrdaState.initial() => PotvrdaState (
 );
 
 }
-class PotvrdaFalseState extends PotvrdaState{
-  PotvrdaFalseState({required super.potvrda});
-}
+
 

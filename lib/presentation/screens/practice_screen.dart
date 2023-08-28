@@ -1,23 +1,18 @@
 import 'package:bloc_learning/bloc/povrda/potvrda_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PracticeHomeScreen extends StatelessWidget {
-  
-  
-
   final TextEditingController _prvitextController = TextEditingController();
   final TextEditingController _drugitextController = TextEditingController();
   final TextEditingController _trecitextController = TextEditingController();
-  PracticeHomeScreen({super.key}) {
-    prvi = _prvitextController.text;
-    drugi = _drugitextController.text;
-    treci = _trecitextController.text;
+  PracticeHomeScreen({Key? key}) {
+    _prvitextController.text = '';
+    _drugitextController.text = '';
+    _trecitextController.text = '';
   }
 
-  late String prvi;
-  late String drugi;
-  late String treci;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,25 +61,45 @@ class PracticeHomeScreen extends StatelessWidget {
                       border: Border.all(width: 2),
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: TextField(
-                      controller: _trecitextController,
-                      decoration: InputDecoration(),
-                    ),
+                    child: state.potvrda
+                        ? TextField(
+                            controller: _trecitextController,
+                            decoration: InputDecoration(),
+                          )
+                        : Animate(
+                           onComplete: (controller) {
+                             _trecitextController.clear();
+                           },
+                            target: 1,
+                            effects: [
+                              ShakeEffect(delay: Duration(milliseconds: 300))
+                            ],
+                            child: TextField(
+                              controller: _trecitextController,
+                              decoration: InputDecoration(),
+                            ),
+                          ),
                   ),
                 ),
-                ElevatedButton(onPressed: () {
-                  PotvrdaBloc potvrdaBloc = BlocProvider.of<PotvrdaBloc>(context);
-                  potvrdaBloc.add(ProvjeriUnos(
-                    prviInputString: _prvitextController.text, drugiInputString: _drugitextController.text, treciInputString: _trecitextController.text,
-                    ));
-                    
-                }, child: Text('POTVRDA')),
-                SizedBox(height: 60,),
+                ElevatedButton(
+                    onPressed: () {
+                      PotvrdaBloc potvrdaBloc =
+                          BlocProvider.of<PotvrdaBloc>(context);
+                      potvrdaBloc.add(ProvjeriUnos(
+                        prviInputString: _prvitextController.text,
+                        drugiInputString: _drugitextController.text,
+                        treciInputString: _trecitextController.text,
+                      ));
+                    },
+                    child: Text('POTVRDA')),
+                SizedBox(
+                  height: 60,
+                ),
                 Center(
                   child: Container(
                     height: 100,
                     width: 100,
-                    color: state.potvrda ? Colors.amber: Colors.cyan,
+                    color: state.potvrda ? Colors.amber : Colors.cyan,
                   ),
                 )
               ],
