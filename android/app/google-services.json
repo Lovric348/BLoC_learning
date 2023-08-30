@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590177898242",
+    "project_id": "bloc-ce331",
+    "storage_bucket": "bloc-ce331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590177898242:android:ff60dad8f54c79a46f3c1b",
+        "android_client_info": {
+          "package_name": "com.example.bloc_learning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590177898242-dntr51nv2gnmjomcgl6n9hdhnddms7sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiIXpjQq7TVVsrJNg1OR84I075dSnkOc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590177898242-dntr51nv2gnmjomcgl6n9hdhnddms7sj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

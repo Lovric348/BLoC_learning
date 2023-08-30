@@ -1,20 +1,14 @@
 part of 'potvrda_bloc.dart';
 
 
-abstract class PotvrdaEvent extends Equatable{}
+abstract class PotvrdaEvent {}
 
-class ProvjeriUnos extends PotvrdaEvent {
-  final String prviInputString;
-  final String drugiInputString;
-  final String treciInputString;
-
-  ProvjeriUnos({
-    required this.prviInputString,
-    required this.drugiInputString,
-    required this.treciInputString,
-  });
-
-  @override
-  List<Object?> get props =>
-      [prviInputString, drugiInputString, treciInputString];
+class EmailEvent extends PotvrdaEvent {
+  final String email;
+  EmailEvent(this.email);
 }
+class PasswordEvent extends PotvrdaEvent {
+  final String password;
+  PasswordEvent(this.password);
+}
+

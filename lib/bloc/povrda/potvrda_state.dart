@@ -1,23 +1,33 @@
-
-
 part of 'potvrda_bloc.dart';
 
-class PotvrdaState extends Equatable {
-   bool potvrda;
+class PotvrdaState {
+  final String email;
+  final String password;
 
-   PotvrdaState(
-    {required this.potvrda}
-    );
-
-  @override
-  List<Object> get props => [potvrda];
+  PotvrdaState(
+      {required this.email, required this.password,});
   
 
+  factory PotvrdaState.initial() => PotvrdaState(
+        email: '', password: '',
+      );
 
-factory PotvrdaState.initial() => PotvrdaState (
-  potvrda: true,
-);
+   PotvrdaState copyWith({
+    String? email,
+    String? password,
+  }) {
+    return PotvrdaState(
+      email: email ?? this.email,
+      password: password ?? this.password,
+    );
+  }
 
+  
+
+  @override
+  int get hashCode => email.hashCode ^ password.hashCode;
 }
+
+  
 
 

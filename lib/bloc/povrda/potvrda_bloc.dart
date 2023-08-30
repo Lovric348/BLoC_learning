@@ -1,24 +1,23 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 part 'potvrda_event.dart';
 part 'potvrda_state.dart';
 
 class PotvrdaBloc extends Bloc<PotvrdaEvent, PotvrdaState> {
-  PotvrdaBloc() : super(PotvrdaState.initial())
+  PotvrdaBloc() : super(PotvrdaState.initial()){
 
-   {on<ProvjeriUnos>(_provjeriPotvrdu);}
+   on<EmailEvent>(_emailEvent);
+   on<PasswordEvent>(_passwordEvent);
+
   }
 
-  void _provjeriPotvrdu(ProvjeriUnos event, Emitter<PotvrdaState> emit) {
-    bool prviBool = event.prviInputString == 'Josip'; 
-    bool drugiBool = event.drugiInputString == 'Lovric';
-    bool treciBool = event.treciInputString == 'palac';
-
-    bool newPotvrdaValue = prviBool && drugiBool && treciBool;
-
-    emit(PotvrdaState(potvrda: newPotvrdaValue));
+  void _emailEvent(EmailEvent event, Emitter<PotvrdaState> emit) {
+    print('my email is ${event.email}');
+    emit(state.copyWith(email: event.email));
   }
 
-
+  void _passwordEvent(PasswordEvent event, Emitter<PotvrdaState> emit) {
+    print('my password is ${event.password}');
+    emit(state.copyWith(password: event.password));
+  }
+}

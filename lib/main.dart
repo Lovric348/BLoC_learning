@@ -1,11 +1,14 @@
 
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'navigation/route.dart';
-import 'bloc/colors/bloc/colors_bloc.dart';
 
-void main() {
+import 'bloc/colors/bloc/colors_bloc.dart';
+import 'navigation/route.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp( MyApp());
 }
 
