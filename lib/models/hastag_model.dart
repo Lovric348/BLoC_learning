@@ -1,3 +1,3 @@
 class Hastag {
-  final String hastag = '';
+  final List<String> hastag = [];
 }
