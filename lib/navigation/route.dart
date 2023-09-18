@@ -18,6 +18,7 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/': 
       return MaterialPageRoute(
+        
         builder:(_) => BlocProvider.value(
         value: _colorsBloc,
         child: FunPage(),

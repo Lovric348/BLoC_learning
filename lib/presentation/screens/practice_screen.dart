@@ -28,6 +28,7 @@ class PracticeHomeScreen extends StatelessWidget {
                     } 
                 ),
                 
+                TextField()
               ],
             ),
           );
