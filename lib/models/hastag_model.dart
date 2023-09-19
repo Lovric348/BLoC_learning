@@ -1,3 +1,6 @@
-class Hastag {
-  final List<String> hastag = [];
+class Shop {
+  final List<String> hastags = [];
+  final String name = '';
+  
+  Shop(this.name, this.hastags);
 }

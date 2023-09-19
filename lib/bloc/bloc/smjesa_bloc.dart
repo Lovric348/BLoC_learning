@@ -1,15 +1,24 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
-import '../../models/hastag_model.dart';
 
 part 'smjesa_event.dart';
 part 'smjesa_state.dart';
 
 class SmjesaBloc extends Bloc<SmjesaEvent, SmjesaState> {
   SmjesaBloc() : super(SmjesaState.initial()) {
-    on<HastagSearch>(_hastagSearch);
-}
+    
 
-void _hastagSearch(HastagSearch event, Emitter<SmjesaState> emit){}
+
+  @override
+  Stream<SmjesaState> mapEventToState(SmjesaEvent event) async* {
+    if (event is HastagSearch) {
+      final searchTerm = event.searchTerm.toLowerCase();
+      final filteredShops = state.trazi
+          .where((shop) =>
+              shop.hastag.any((hastag) => hastag.toLowerCase().contains(searchTerm)))
+          .toList();
+
+      yield SmjesaState(filteredShops);
+    }
+  }
+  }
 }
