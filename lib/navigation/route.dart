@@ -1,3 +1,4 @@
+import 'package:bloc_learning/bloc/bloc/pretrazi_bloc.dart';
 import 'package:bloc_learning/bloc/colors/bloc/colors_bloc.dart';
 import 'package:bloc_learning/bloc/posts/bloc/posts_bloc.dart';
 import 'package:bloc_learning/bloc/povrda/potvrda_bloc.dart';
@@ -13,6 +14,9 @@ class AppRouter {
   final ColorsBloc _colorsBloc= ColorsBloc();
   final PostsBloc _postsBloc= PostsBloc();
   final PotvrdaBloc _potvrdaBloc= PotvrdaBloc();
+  final List<String> listaHashtagov = ['auto', 'automobili', 'auti', 'bicikli', 'kombajn', 'bager', 'tamburica'];
+  final PretraziBloc _traziBloc= PretraziBloc();
+
 
   Route? onGenerateRoute(RouteSettings routeSettings){
     switch (routeSettings.name) {
@@ -42,7 +46,7 @@ class AppRouter {
       case '/practice': 
       return MaterialPageRoute(
         builder:(_) => BlocProvider.value(
-        value: _potvrdaBloc,
+        value: _traziBloc,
         child: PracticeHomeScreen(),
         
         ), );  
