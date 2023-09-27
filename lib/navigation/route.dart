@@ -14,7 +14,6 @@ class AppRouter {
   final ColorsBloc _colorsBloc= ColorsBloc();
   final PostsBloc _postsBloc= PostsBloc();
   final PotvrdaBloc _potvrdaBloc= PotvrdaBloc();
-  final List<String> listaHashtagov = ['auto', 'automobili', 'auti', 'bicikli', 'kombajn', 'bager', 'tamburica'];
   final PretraziBloc _traziBloc= PretraziBloc();
 
 

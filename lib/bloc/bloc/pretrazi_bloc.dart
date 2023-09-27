@@ -11,13 +11,17 @@ class PretraziBloc extends Bloc<PretraziEvent, PretraziState> {
     on<PretragaHashtagovaEvent>(_pretragaHashtagovaEvent);
   }
 
-  
-  void _pretragaHashtagovaEvent(PretragaHashtagovaEvent event, Emitter<PretraziState> emit) async{
+ void  _pretragaHashtagovaEvent(PretragaHashtagovaEvent event, Emitter<PretraziState> emit) async{
     final value = event.value;
-    final List<String> matchingStrings = listaHashtagova.lista
-        .where((word) => word.toLowerCase().contains(value.toLowerCase()))
+    if(value.isEmpty){
+      emit(PretraziState(istiStringovi: []));
+    }else {
+    final List<dynamic> matchingStrings = listaHashtagova.lista
+        .where((word) => word.toLowerCase().startsWith(value.toLowerCase()))
         .toList();
         await Future.delayed(Duration(seconds: 2));
         emit(PretraziState(istiStringovi: matchingStrings));
+        }
   }
 }
+ 
