@@ -1,4 +1,3 @@
-import 'package:bloc_learning/bloc/bloc/pretrazi_bloc.dart';
 import 'package:bloc_learning/bloc/colors/bloc/colors_bloc.dart';
 import 'package:bloc_learning/bloc/posts/bloc/posts_bloc.dart';
 import 'package:bloc_learning/bloc/povrda/potvrda_bloc.dart';
@@ -14,7 +13,7 @@ class AppRouter {
   final ColorsBloc _colorsBloc= ColorsBloc();
   final PostsBloc _postsBloc= PostsBloc();
   final PotvrdaBloc _potvrdaBloc= PotvrdaBloc();
-  final PretraziBloc _traziBloc= PretraziBloc();
+  
 
 
   Route? onGenerateRoute(RouteSettings routeSettings){
@@ -45,7 +44,7 @@ class AppRouter {
       case '/practice': 
       return MaterialPageRoute(
         builder:(_) => BlocProvider.value(
-        value: _traziBloc,
+        value: _potvrdaBloc,
         child: PracticeHomeScreen(),
         
         ), );  
