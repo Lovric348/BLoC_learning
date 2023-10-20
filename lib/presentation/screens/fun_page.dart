@@ -1,3 +1,4 @@
+import 'package:bloc_learning/presentation/screens/korisnik.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -88,6 +89,22 @@ class _FunPageState extends State<FunPage> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/practice');
+                        
+                          
+                        
+                      }),
+                      ElevatedButton(
+                      child: Text(
+                        'FIREBASE',
+                        style: TextStyle(
+                          fontSize: 29,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => KorisnikHomeScreen()),);
                         
                           
                         

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "337724952571",
+    "project_id": "blocnew-2a290",
+    "storage_bucket": "blocnew-2a290.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337724952571:android:341d6ef5272513b45d055e",
+        "android_client_info": {
+          "package_name": "com.example.bloc_learning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI2c7Qcn7EPXYpkmHgJDMhbfWp_7COIWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

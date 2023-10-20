@@ -1,4 +1,5 @@
 
+import 'package:bloc_learning/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,9 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/colors/bloc/colors_bloc.dart';
 import 'navigation/route.dart';
 
-Future main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp( MyApp());
 }
 
