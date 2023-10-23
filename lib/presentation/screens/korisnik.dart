@@ -1,15 +1,9 @@
-import 'package:bloc_learning/models/korisnik.dart';
-import 'package:bloc_learning/widgets/korisnik_widget.dart';
+import 'package:bloc_learning/service/firestore_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class KorisnikHomeScreen extends StatefulWidget {
   
-  /* [
-    Korisnik(ime: 'Mato', prezime: 'Basic', godine: 28),
-    Korisnik(ime: 'Pejo', prezime: 'Crnoja', godine: 38),
-    Korisnik(ime: 'Ivo', prezime: 'Jaje', godine: 23)
-  ]; */
   KorisnikHomeScreen({super.key});
 
   @override
@@ -17,46 +11,60 @@ class KorisnikHomeScreen extends StatefulWidget {
 }
 
 class _KorisnikHomeScreenState extends State<KorisnikHomeScreen> {
-  List<Korisnik> korisnici = [];
-  Future<Korisnik> getDocIds() async {
-    String ime = '';
-    String prezime = '';
-    int godine = 0;
-    try{
-    DocumentSnapshot docSnapshot = await FirebaseFirestore.instance.collection('korisnici').doc().get();
-    ime = docSnapshot['ime'];
-    prezime = docSnapshot['prezime'];
-    godine = docSnapshot['godine'];
-    }
-        
-    on FirebaseException {
-    // sto ako bude error
-  }
-  return Korisnik(ime: ime, prezime: prezime, godine: godine);
-  }
+  FirestoreService firestoreService = FirestoreService();
   
-
-  @override
-  void initState() {
-    getDocIds();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        
+          
         body: Padding(
+          
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            child: ListView.builder(
-              itemCount: korisnici.length,
-              itemBuilder: (BuildContext context, index) {
-                return KorisnikWidget(korisnik: korisnici[index]);
-              },
-            ),
+            child: StreamBuilder<QuerySnapshot>(
+              stream: firestoreService.procitajKorisnike(),
+              builder: (context, snapshot) {
+                //ako imamo podatke pokazi ih
+                if (snapshot.hasData) {
+                  List korisniciLista = snapshot.data!.docs;
+                  print(korisniciLista);
+                  //prikazi kao listu
+                  return ListView.builder(
+                    itemCount: korisniciLista.length,
+                    itemBuilder: (context, index) {
+                      //dohvati svaki individualni dokument
+                      DocumentSnapshot dokument = korisniciLista[index];
+                      String docId = dokument.id;
+
+                      //dohvati podatke iz svakog dokumenta
+                      Map<String, dynamic> data = 
+                      dokument.data() as Map<String, dynamic>;
+                      String imeText = data['ime'];
+                      
+
+                      //prikazi na UI
+                      return ListTile(
+                        title: Text(imeText),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: ()=> firestoreService.obrisiKorisnika(docId)),
+                      );
+
+                    });
+                } else {
+                  return const Text('no data');
+                }
+              },),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blueGrey,
+          onPressed: (){
+           firestoreService.checkFirestoreConnection();
+          },
+      ),
       ),
     );
   }
